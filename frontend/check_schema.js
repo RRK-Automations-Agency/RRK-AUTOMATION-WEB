@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const supabaseUrl = process.env.VITE_SUPABASE_URL || "https://uynqqiujvcdkslpmzuxo.supabase.co"; // just a placeholder if local env missing, but we expect .env in frontend
+const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
