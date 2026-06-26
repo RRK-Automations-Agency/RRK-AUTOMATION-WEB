@@ -55,3 +55,24 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Explicit SPA fallback for admin and auth routes (ensures they work even if catch-all order changes)
+[[redirects]]
+  from = "/admin"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/auth"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/auth/*"
+  to = "/index.html"
+  status = 200
