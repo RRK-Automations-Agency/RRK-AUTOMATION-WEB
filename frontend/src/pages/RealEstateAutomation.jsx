@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Home } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function RealEstateAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function RealEstateAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Vikram Mehta",
-          role: "Principal Broker, Apex Properties",
-          quote:
-            "Automating our lead intake changed our business. Leads from listing sites are texted within 30 seconds, qualified, and booked on our calendars before other agents even read the email.",
-          rating: 5,
-        },
-        {
-          name: "Sanjay Sen",
-          role: "Director, Urban Spaces",
-          quote:
-            "We used to lose leads because agents were busy on property tours. The automated WhatsApp screening qualifies prospects so we only call ready buyers.",
-          rating: 5,
-        },
-        {
-          name: "Meera Nair",
-          role: "Independent Realtor",
-          quote:
-            "My clients love the scheduling links. No back-and-forth emails to pick a showing time. It syncs with my Google Calendar and handles reminders automatically.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Map your listings & CRM", desc: "We connect your CRM, calendar availability, and lead capture sources." },
         { title: "Build qualification flows", desc: "We configure WhatsApp and web chat templates matching your script." },

@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Users } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function AgencyAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function AgencyAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Amit Deshmukh",
-          role: "CEO, GrowthWave Agency",
-          quote:
-            "Our account managers used to spend their first week onboarding a client manually. Now it happens in seconds. Stripe alerts click, ClickUp boards build, and kickoffs send automatically.",
-          rating: 5,
-        },
-        {
-          name: "Pooja Hegde",
-          role: "Operations Lead, CreativeCo",
-          quote:
-            "Automated client reporting changed everything. We connected client metrics directly to custom dashboards. Saves our team 3 full workdays every single month.",
-          rating: 5,
-        },
-        {
-          name: "Kabir Sen",
-          role: "Founder, PixelPath",
-          quote:
-            "No more lost leads. We integrated our site forms and social lead ads directly to a central Slack channel, ensuring 5-minute response speeds.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Audit your tech stack", desc: "We map your CRM, PM tools, chat software, and financial programs." },
         { title: "Configure standard templates", desc: "We create folders, documents, and notifications structures." },

@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Bot } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function AIChatbots() {
   return (
@@ -63,29 +64,7 @@ export default function AIChatbots() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Ankit Sharma",
-          role: "Founder, Digital Marketing Agency",
-          quote:
-            "The chatbot stopped our team from missing inbound leads after hours. Response speed improved immediately and qualified calls started landing in the calendar without manual follow-up.",
-          rating: 5,
-        },
-        {
-          name: "Rahul Verma",
-          role: "CEO, Coaching Academy",
-          quote:
-            "Our enquiry flow became much cleaner once the bot handled the first layer of questions. We now spend time on serious prospects instead of repeating the same answers all day.",
-          rating: 5,
-        },
-        {
-          name: "Neha Kapoor",
-          role: "Growth Lead, Education Brand",
-          quote:
-            "The booking handoff was the biggest win. Visitors got answers fast, picked a time inside the flow, and our team received cleaner context before the call.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Free audit call", desc: "We map your top questions, channels, and what a qualified lead looks like for you." },
         { title: "We build & train", desc: "We connect your content, set the tone of voice, and wire up lead capture and handoff." },

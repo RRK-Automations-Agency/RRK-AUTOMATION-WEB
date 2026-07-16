@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Wrench } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function LocalServicesAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function LocalServicesAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Sanjay Kumar",
-          role: "Owner, SK Plumbing",
-          quote:
-            "Before automating, we missed dozens of weekend job requests. The booking chatbot scheduled viewings and appointments automatically, boosting weekend bookings by 40%.",
-          rating: 5,
-        },
-        {
-          name: "Amit Patel",
-          role: "Manager, EcoAir HVAC",
-          quote:
-            "Review automation worked instantly. We went from asking clients for reviews to getting Google ratings automatically after every technician visit.",
-          rating: 5,
-        },
-        {
-          name: "Neha Joshi",
-          role: "Operations, CleanHome",
-          quote:
-            "Technician ETA texts keep clients informed. No more 'Where is my technician?' calls, freeing up our office staff for growth.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Map business stack", desc: "We review your calendar, payment processors, dispatch systems, and booking pipelines." },
         { title: "Wired scheduling gates", desc: "We deploy booking forms, SMS templates, billing links, and feedback loops." },

@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { TrendingUp } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function FinanceAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function FinanceAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Saurabh Joshi",
-          role: "Founder, Capital Advisors",
-          quote:
-            "Connecting our Stripe payments directly to QuickBooks has saved us hours of accounting admin. Ledger balances match perfectly, and invoices update in real-time.",
-          rating: 5,
-        },
-        {
-          name: "Komal Sen",
-          role: "Finance Director, BuildCorp",
-          quote:
-            "Overdue invoice collection has become hands-off. Reminders go out automatically, and patients/clients pay through secure online links.",
-          rating: 5,
-        },
-        {
-          name: "Arun Malhotra",
-          role: "Partner, J&M Accounting",
-          quote:
-            "Receipt collection works flawlessly. Clients upload files to our secure portal, details extract, and files route into QuickBooks.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Review accounting tools", desc: "We map your billing tools, invoice apps, banking APIs, and ledger systems." },
         { title: "Configure integrations", desc: "We deploy secure data pipes, balance triggers, and receipt upload forms." },

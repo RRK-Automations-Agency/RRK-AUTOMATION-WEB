@@ -1,32 +1,9 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-
-const defaultTestimonials = [
-  {
-    name: "Ankit Sharma",
-    role: "Founder, Digital Marketing Agency",
-    quote:
-      "RRK Automations transformed our lead follow-up process. We went from losing 40% of our leads to responding within 30 seconds. The ROI was almost immediate.",
-    rating: 5,
-  },
-  {
-    name: "Priya Mehta",
-    role: "Operations Head, Real Estate Firm",
-    quote:
-      "The WhatsApp automation they built handles all our property inquiries automatically. Our team now focuses on closing deals instead of answering repetitive questions.",
-    rating: 5,
-  },
-  {
-    name: "Rahul Verma",
-    role: "CEO, Coaching Academy",
-    quote:
-      "We saved over 10 hours per week on follow-ups alone. The automated booking system has increased our consultation calls by 3x.",
-    rating: 5,
-  },
-];
+import testimonials from "../data/testimonials";
 
 export default function TestimonialsSection({
-  items = defaultTestimonials,
+  items = testimonials,
   eyebrow = "Testimonials",
   title = "What Our Clients Say",
   description = "Real feedback from businesses that automated their growth with us.",
