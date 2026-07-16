@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Presentation } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function ConsultingAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function ConsultingAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Dr. Manish Sen",
-          role: "Founder, Peak Strategy Group",
-          quote:
-            "Before this, I spent half my week on client onboarding and scoping. Now, clients apply online, qualify, sign their retainers, and get kickoff files automatically. Unbelievable time-saver.",
-          rating: 5,
-        },
-        {
-          name: "Shruti Verma",
-          role: "Independent HR Consultant",
-          quote:
-            "The screening form has cleared my schedule. I only jump on calls with qualified prospects who match my pricing and timeline criteria.",
-          rating: 5,
-        },
-        {
-          name: "Anand Malhotra",
-          role: "Managing Director, Core Advisory",
-          quote:
-            "Connecting our scheduling tools to ClickUp task boards has simplified project starts. All templates build correctly without manual checks.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Map consulting templates", desc: "We review your client intakes, standard packages, agreement structures, and project tools." },
         { title: "Wired intake pipeline", desc: "We build screening rules, calendar blocks, invoice links, and document triggers." },

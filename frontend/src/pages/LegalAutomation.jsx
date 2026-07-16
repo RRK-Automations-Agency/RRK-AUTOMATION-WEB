@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Briefcase } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function LegalAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function LegalAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Suresh Iyer",
-          role: "Managing Partner, Iyer Legal",
-          quote:
-            "Automated intakes changed how we work. Prospects fill out the case details, Clio updates in the background, and retainers are sent automatically. It has halved our onboarding workload.",
-          rating: 5,
-        },
-        {
-          name: "Monica Sharma",
-          role: "Solo Attorney, MS Legal Services",
-          quote:
-            "The calendar deadlining setup has saved us on multiple occasions. It auto-calculates filing dates from case milestones and alerts my team.",
-          rating: 5,
-        },
-        {
-          name: "Rahul Roy",
-          role: "Operations Director, Veritas Law",
-          quote:
-            "Our administrative staff used to chase files all day. The secure document collector sends reminders and routes files right into the correct case folders.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Define case templates", desc: "We map out your fields, standard client agreements, and calendar deadlines." },
         { title: "Build secure pathways", desc: "We deploy secure intake forms, auto-document actions, and CRM connections." },

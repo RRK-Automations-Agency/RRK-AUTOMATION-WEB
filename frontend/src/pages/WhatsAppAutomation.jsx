@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { MessageCircle } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function WhatsAppAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function WhatsAppAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Priya Mehta",
-          role: "Operations Head, Real Estate Firm",
-          quote:
-            "WhatsApp became our fastest response channel once RRK automated the first reply and routing. Our team stopped juggling messages across personal phones and the handoff got much cleaner.",
-          rating: 5,
-        },
-        {
-          name: "Siddharth Jain",
-          role: "Founder, Local Services Business",
-          quote:
-            "Reminder and follow-up messages now go out on time without anyone chasing them. That alone reduced missed appointments and saved our staff a lot of back-and-forth.",
-          rating: 5,
-        },
-        {
-          name: "Madhavi Rao",
-          role: "Customer Success Lead, D2C Brand",
-          quote:
-            "Order updates and customer replies are far more consistent now. The big win for us was moving from reactive WhatsApp support to a reliable automation system.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Free audit call", desc: "We review your customer journey and pick the highest-impact messages to automate first." },
         { title: "We build & connect", desc: "We provision the API, design the flows, and connect your CRM or store." },

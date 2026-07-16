@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { GraduationCap } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function EducationAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function EducationAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Rajesh Nair",
-          role: "Founder, TechAcademy",
-          quote:
-            "Before automating, certificate delivery took our team a full week. Now students get their verified PDFs instantly on course completion. It has simplified our operations.",
-          rating: 5,
-        },
-        {
-          name: "Sonia Mehta",
-          role: "Admissions Lead, Global Prep",
-          quote:
-            "WhatsApp reminders have increased class attendance. Students get lesson updates, study sheets, and links sent directly to their phones.",
-          rating: 5,
-        },
-        {
-          name: "Abhishek Roy",
-          role: "Director, SkillForge India",
-          quote:
-            "Intake sync works perfectly. User registrations, refunds, and billing upgrades are tracked in our database with zero manual updates.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Audit academy stack", desc: "We review your LMS configurations, course rosters, payment processors, and client tools." },
         { title: "Wired data flows", desc: "We deploy registration triggers, calendar blocks, PDF generators, and notification webhooks." },

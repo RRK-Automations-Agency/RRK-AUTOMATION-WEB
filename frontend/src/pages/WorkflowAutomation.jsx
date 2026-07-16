@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Workflow } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function WorkflowAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function WorkflowAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Karan Malhotra",
-          role: "Founder, SaaS Operations Team",
-          quote:
-            "RRK cleaned up several brittle automations and rebuilt them with proper error handling. The workflow now runs quietly in the background instead of needing constant checks.",
-          rating: 5,
-        },
-        {
-          name: "Ananya Sen",
-          role: "Growth Operations Manager",
-          quote:
-            "The biggest win was data moving between apps without exports and imports. That removed weekly manual work and reduced small but costly mistakes.",
-          rating: 5,
-        },
-        {
-          name: "Vivek Reddy",
-          role: "Technical Lead, Agency",
-          quote:
-            "They chose the right automation tool for the flow instead of forcing everything into one platform. That kept the workflow simpler and easier for our team to maintain.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Free audit call", desc: "We map the apps involved and the exact trigger-to-outcome path you need." },
         { title: "We build & test", desc: "We build the workflow, transform the data, and test it against real edge cases." },

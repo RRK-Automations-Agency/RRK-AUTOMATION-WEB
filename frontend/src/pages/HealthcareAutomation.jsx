@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Stethoscope } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function HealthcareAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function HealthcareAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Dr. Ananya Rao",
-          role: "Clinical Director, Rao Dental",
-          quote:
-            "The WhatsApp reminder flow has been a game changer. Our no-show rate fell below 5% within the first month. Patients find the quick confirm/reschedule options extremely convenient.",
-          rating: 5,
-        },
-        {
-          name: "Milind Shah",
-          role: "Practice Manager, Apex Health",
-          quote:
-            "Intake forms are now filled out before patients arrive. Our front desk doesn't have to scan paper documents or copy details into our clinic system anymore.",
-          rating: 5,
-        },
-        {
-          name: "Dr. Priya Patel",
-          role: "Founder, Lotus Pediatrics",
-          quote:
-            "Automating review requests has boosted our Google reviews significantly. We now get steady feedback and high ratings after every visit.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Audit clinic workflow", desc: "We map your PMS/EHR scheduling, client data paths, and notification rules." },
         { title: "Deploy secure pipelines", desc: "We set up secure intake forms, SMS/WhatsApp templates, and database synchronizations." },

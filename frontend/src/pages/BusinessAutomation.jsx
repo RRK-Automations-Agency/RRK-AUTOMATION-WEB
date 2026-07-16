@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Building2 } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function BusinessAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function BusinessAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Rahul Verma",
-          role: "CEO, Coaching Academy",
-          quote:
-            "The first automation removed hours of repetitive admin from our week. Once we saw one workflow running reliably, it was obvious where to expand next.",
-          rating: 5,
-        },
-        {
-          name: "Deepika Nair",
-          role: "Operations Manager, Consulting Firm",
-          quote:
-            "RRK mapped the messy handoffs between forms, spreadsheets, billing, and onboarding, then replaced them with one connected workflow. That improved both speed and visibility.",
-          rating: 5,
-        },
-        {
-          name: "Arjun Patel",
-          role: "Director, Service Business",
-          quote:
-            "We no longer rely on memory to move a client from sale to delivery. The automation created a cleaner process and reduced the chance of steps being missed.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Free audit call", desc: "We map your current process and find the steps costing the most time." },
         { title: "We build & connect", desc: "We wire up the integrations and automations, then test them against real data." },

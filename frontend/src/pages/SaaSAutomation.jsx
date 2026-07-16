@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { Cloud } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function SaaSAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function SaaSAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Vikram Sen",
-          role: "Co-Founder, MailPulse SaaS",
-          quote:
-            "Connecting Stripe events to HubSpot saved us from endless developer work. All cancellations, updates, and refunds sync instantly, keeping our sales records clean.",
-          rating: 5,
-        },
-        {
-          name: "Nikhil Joshi",
-          role: "VP of Product, TaskFlow",
-          quote:
-            "Behavioral onboarding has boosted our platform activation rate. Users who don't invite team members within 3 days get helpful hints automatically.",
-          rating: 5,
-        },
-        {
-          name: "Divya Gupta",
-          role: "Customer Success Director, DataGrid",
-          quote:
-            "Our team gets real-time Slack notifications showing new accounts, upgrades, and cancellations. It keeps everyone aligned and responsive.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Map SaaS endpoints", desc: "We review your SaaS API endpoints, billing software, and target database fields." },
         { title: "Wired data pipelines", desc: "We connect event webhooks, setup user-scoring rules, and map fields to your CRM." },

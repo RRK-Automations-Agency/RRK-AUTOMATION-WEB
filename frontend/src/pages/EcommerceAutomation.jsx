@@ -1,5 +1,6 @@
 import ServiceLanding from "../components/ServiceLanding";
 import { ShoppingBag } from "lucide-react";
+import testimonials from "../data/testimonials";
 
 export default function EcommerceAutomation() {
   return (
@@ -63,29 +64,7 @@ export default function EcommerceAutomation() {
           },
         ],
       }}
-      testimonials={[
-        {
-          name: "Rohan Bajaj",
-          role: "Co-Founder, FitGlow India",
-          quote:
-            "WhatsApp cart recovery recovered 4 times more carts than emails. Setup was incredibly easy, and the automation paid for itself in less than 48 hours.",
-          rating: 5,
-        },
-        {
-          name: "Deepika Sen",
-          role: "Owner, Bloom Apparel",
-          quote:
-            "Our support team was swamped with 'Where is my order?' queries. The new order status chatbot resolves 60% of these calls automatically.",
-          rating: 5,
-        },
-        {
-          name: "Karan Patel",
-          role: "Operations Manager, TechWare",
-          quote:
-            "Connecting Shopify directly to our regional courier APIs has cut out all manual Excel exports. Tracking numbers update in real-time.",
-          rating: 5,
-        },
-      ]}
+      testimonials={testimonials}
       steps={[
         { title: "Connect your store", desc: "We link your store APIs (Shopify/Woo) to our automation dashboard securely." },
         { title: "Define the triggers", desc: "We build workflows for abandonment, confirmation, and support lookups." },
