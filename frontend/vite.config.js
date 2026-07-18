@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
+    sourcemap: false,
     // Split heavy third-party libs into long-cacheable vendor chunks so a
     // change to app code doesn't bust the whole bundle.
     rollupOptions: {

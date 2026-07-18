@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { getSupabase } from "../lib/supabase";
 import { buildCalendlyUrl } from "../lib/calendly";
+import TurnstileWidget from "./TurnstileWidget";
 
 const EMPTY = { name: "", email: "", phone: "", business: "", company_website: "" };
 
@@ -23,6 +24,8 @@ export default function LeadGateModal({ isOpen, onClose, source }) {
   const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [turnstileToken, setTurnstileToken] = useState(null);
+  const [turnstileError, setTurnstileError] = useState(false);
   const firstFieldRef = useRef(null);
   const lastSavedRef = useRef(EMPTY);
 
@@ -32,6 +35,8 @@ export default function LeadGateModal({ isOpen, onClose, source }) {
       setForm(EMPTY);
       setErrors({});
       setStatus("idle");
+      setTurnstileToken(null);
+      setTurnstileError(false);
     }
   }, [isOpen]);
 
@@ -58,6 +63,9 @@ export default function LeadGateModal({ isOpen, onClose, source }) {
     if (!form.email.trim()) next.email = "Enter your email";
     else if (!/^\S+@\S+\.\S+$/.test(form.email.trim()))
       next.email = "Enter a valid email";
+    if (import.meta.env.VITE_TURNSTILE_SITE_KEY && !turnstileToken) {
+      next.turnstile = "Please complete the security check";
+    }
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -90,6 +98,7 @@ export default function LeadGateModal({ isOpen, onClose, source }) {
         ? `Booking free audit via Calendly (${source})`
         : "Booking free audit via Calendly",
       company_website: "",
+      turnstile_token: turnstileToken || undefined,
     };
     lastSavedRef.current = lead;
 
@@ -268,6 +277,21 @@ export default function LeadGateModal({ isOpen, onClose, source }) {
                       />
                     </Field>
                   </div>
+
+                  {/* Cloudflare Turnstile */}
+                  <TurnstileWidget
+                    key={form.name + form.email} // reset when form is cleared
+                    onVerify={setTurnstileToken}
+                    onError={() => setTurnstileError(true)}
+                  />
+                  {errors.turnstile && (
+                    <p className="text-red-500 text-xs text-center">{errors.turnstile}</p>
+                  )}
+                  {turnstileError && (
+                    <p className="text-amber-500 text-xs text-center">
+                      Security check unavailable. You can still book — we'll reach out.
+                    </p>
+                  )}
 
                   {status === "error" && (
                     <div className="flex items-start gap-2.5 rounded-xl border border-amber-500/30 bg-amber-500/5 p-3.5">

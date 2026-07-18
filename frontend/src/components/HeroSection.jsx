@@ -118,21 +118,25 @@ const HeroSection = () => {
             {/* Social Proof */}
             <motion.div
               variants={fadeUp}
-              className="mt-16 pt-8 border-t border-border flex flex-wrap items-center gap-x-8 gap-y-4"
+              className="mt-16 pt-8 border-t border-border"
             >
-              <div>
-                <p className="text-2xl font-bold text-secondary">50+</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Workflows</p>
-              </div>
-              <div className="w-px h-10 bg-border" />
-              <div>
-                <p className="text-2xl font-bold text-accent">48hrs</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Deployment</p>
-              </div>
-              <div className="w-px h-10 bg-border" />
-              <div>
-                <p className="text-2xl font-bold text-white">15+</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Clients</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 items-center gap-4 md:gap-0 md:divide-x divide-border text-center">
+                <div className="md:px-8 py-2">
+                  <p className="text-2xl font-bold text-secondary">523+</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Projects Delivered</p>
+                </div>
+                <div className="md:px-8 py-2">
+                  <p className="text-2xl font-bold text-accent">400+</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Happy Clients</p>
+                </div>
+                <div className="md:px-8 py-2">
+                  <p className="text-2xl font-bold text-secondary">50+</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Mobile & Web Apps</p>
+                </div>
+                <div className="md:px-8 py-2">
+                  <p className="text-2xl font-bold text-white">5.5+</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Years Experience</p>
+                </div>
               </div>
             </motion.div>
           </motion.div>

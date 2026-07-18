@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { supabase } from "../../lib/supabase";
 import { Button } from "../../components/ui/button";
 import { useToast } from "../../hooks/use-toast";
+import { useAuth } from "../../hooks/AuthContext";
 import AdminLayout from "../../components/AdminLayout";
 import {
   Users,
@@ -25,13 +26,14 @@ const statusColors = {
 
 const Admin = () => {
   const { toast } = useToast();
+  const { isAdmin } = useAuth();
   const [leads, setLeads] = useState([]);
   const [isLoadingLeads, setIsLoadingLeads] = useState(true);
   const [statusFilter, setStatusFilter] = useState("all");
 
   useEffect(() => {
-    fetchLeads();
-  }, []);
+    if (isAdmin) fetchLeads();
+  }, [isAdmin]);
 
   const fetchLeads = async () => {
     setIsLoadingLeads(true);

@@ -3,7 +3,28 @@ import { AuthProvider } from "./hooks/AuthContext";
 import { CalendlyGateProvider } from "./components/CalendlyLeadGate";
 import { Toaster } from "./components/ui/toaster";
 import { lazy, Suspense } from "react";
+import * as Sentry from "@sentry/react";
 import "./index.css";
+
+// ============================================================
+// Sentry error monitoring
+// ============================================================
+if (import.meta.env.VITE_SENTRY_DSN) {
+  Sentry.init({
+    dsn: import.meta.env.VITE_SENTRY_DSN,
+    tracesSampleRate: 0,
+    // React runtime errors and unhandled promise rejections
+    // are captured automatically by the default integrations.
+  });
+}
+
+// ============================================================
+// Environment validation — fail fast with descriptive errors
+// ============================================================
+import { validateEnv } from "./lib/env";
+if (import.meta.env.PROD) {
+  validateEnv();
+}
 
 // Pages
 import Index from "./pages/index";
