@@ -3,8 +3,10 @@ import { supabase } from "../../lib/supabase";
 import { Button } from "../../components/ui/button";
 import { Trash2, Edit2, Plus } from "lucide-react";
 import AdminLayout from "../../components/AdminLayout";
+import { useAuth } from "../../hooks/AuthContext";
 
 const AdminPricing = () => {
+  const { isAdmin } = useAuth();
   const [plans, setPlans] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -20,18 +22,18 @@ const AdminPricing = () => {
     order_index: 0
   });
 
-  useEffect(() => {
-    fetchPlans();
-  }, []);
-
-  const fetchPlans = async () => {
+  async function fetchPlans() {
     const { data } = await supabase
       .from("pricing_plans")
       .select("*")
       .order("order_index", { ascending: true });
 
     setPlans(data || []);
-  };
+  }
+
+  useEffect(() => {
+    if (isAdmin) fetchPlans();
+  }, [isAdmin]);
 
   // Verified schema: price_inr/price_usd are integer, features is jsonb.
   const toIntOrNull = (v) => {

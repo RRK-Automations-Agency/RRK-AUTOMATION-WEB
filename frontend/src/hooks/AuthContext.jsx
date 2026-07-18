@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect, createContext, useContext, useRef } from "react";
 import { getSupabase } from "../lib/supabase";
 
 const AuthContext = createContext(undefined);
@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [session, setSession] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const authEventRef = useRef(null); // "INITIAL_SESSION" | "SIGNED_IN" | null
 
   useEffect(() => {
     let subscription;
@@ -17,12 +18,13 @@ export const AuthProvider = ({ children }) => {
       const {
         data: { subscription: sub },
       } = supabase.auth.onAuthStateChange((event, session) => {
+        authEventRef.current = event;
         setSession(session);
         setUser(session?.user ?? null);
 
         if (session?.user) {
           setTimeout(() => {
-            checkAdminRole(supabase, session.user.id);
+            checkAdminRole(supabase, session.user.id, session.user.email);
           }, 0);
         } else {
           setIsAdmin(false);
@@ -35,11 +37,12 @@ export const AuthProvider = ({ children }) => {
 
       // Check existing session
       supabase.auth.getSession().then(({ data: { session } }) => {
+        authEventRef.current = "INITIAL_SESSION";
         setSession(session);
         setUser(session?.user ?? null);
 
         if (session?.user) {
-          checkAdminRole(supabase, session.user.id);
+          checkAdminRole(supabase, session.user.id, session.user.email);
         }
 
         setIsLoading(false);
@@ -49,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     return () => subscription?.unsubscribe();
   }, []);
 
-  const checkAdminRole = async (supabase, userId) => {
+  async function checkAdminRole(supabase, userId, userEmail) {
     try {
       const { data, error } = await supabase
         .from("user_roles")
@@ -58,11 +61,24 @@ export const AuthProvider = ({ children }) => {
         .eq("role", "admin")
         .maybeSingle();
 
-      setIsAdmin(!!data && !error);
+      const isAdminCheck = !!data && !error;
+      setIsAdmin(isAdminCheck);
+
+      // Log real admin login events (not session restore on page refresh)
+      if (isAdminCheck && authEventRef.current === "SIGNED_IN") {
+        supabase
+          .rpc("log_security_event", {
+            p_action: "login",
+            p_entity: "auth",
+            p_details: JSON.stringify({ email: userEmail || userId }),
+          })
+          .catch(() => {});
+        authEventRef.current = null;
+      }
     } catch {
       setIsAdmin(false);
     }
-  };
+  }
 
   const signUp = async (email, password, fullName) => {
     const supabase = await getSupabase();
@@ -88,6 +104,17 @@ export const AuthProvider = ({ children }) => {
       email,
       password,
     });
+
+    // Log failed login attempts
+    if (error) {
+      supabase
+        .rpc("log_security_event", {
+          p_action: "login_failed",
+          p_entity: "auth",
+          p_details: JSON.stringify({ email }),
+        })
+        .catch(() => {});
+    }
 
     return { error };
   };

@@ -2,3 +2,10 @@ project_id = "glutamcpynegwqbjcwgr"
 
 [functions.submit-lead]
 verify_jwt = false
+# Required secrets (set with `supabase secrets set KEY=value`):
+#   EMAILJS_SERVICE_ID
+#   EMAILJS_TEMPLATE_ID_INTERNAL
+#   EMAILJS_PUBLIC_KEY
+#   EMAILJS_PRIVATE_KEY
+#   TURNSTILE_SECRET_KEY
+#   LEAD_NOTIFY_TO

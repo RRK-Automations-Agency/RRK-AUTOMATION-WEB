@@ -15,6 +15,7 @@ import { useToast } from "../hooks/use-toast";
 import { getSupabase } from "../lib/supabase";
 import { motion } from "framer-motion";
 import { useCalendlyGate } from "./CalendlyLeadGate";
+import TurnstileWidget from "./TurnstileWidget";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -30,6 +31,8 @@ const ContactSection = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [turnstileToken, setTurnstileToken] = useState(null);
+  const [turnstileError, setTurnstileError] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
@@ -37,6 +40,9 @@ const ContactSection = () => {
     if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Please enter a valid email";
     if (!formData.message.trim()) newErrors.message = "Message is required";
+    if (import.meta.env.VITE_TURNSTILE_SITE_KEY && !turnstileToken) {
+      newErrors.turnstile = "Please complete the security check";
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -57,6 +63,7 @@ const ContactSection = () => {
           business_name: formData.business.trim() || null,
           message: formData.message.trim(),
           company_website: "",
+          turnstile_token: turnstileToken || undefined,
         },
       });
 
@@ -274,6 +281,21 @@ const ContactSection = () => {
                     <p className="text-red-500 text-xs mt-1.5">{errors.message}</p>
                   )}
                 </div>
+
+                {/* Cloudflare Turnstile */}
+                <TurnstileWidget
+                  key={formData.message} // reset on form clear
+                  onVerify={setTurnstileToken}
+                  onError={() => setTurnstileError(true)}
+                />
+                {errors.turnstile && (
+                  <p className="text-red-500 text-xs text-center">{errors.turnstile}</p>
+                )}
+                {turnstileError && (
+                  <p className="text-amber-500 text-xs text-center">
+                    Security check unavailable. Please refresh if the issue persists.
+                  </p>
+                )}
 
                 <Button
                   type="submit"
